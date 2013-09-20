@@ -1,0 +1,14 @@
+<div class="masthead" ng-show="connected" ng-controller="NavigationCtrl">
+  <h3 class="muted">Slot Car Master</h3>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <ul class="nav">
+          <li ng-class="{active: activeTab == 'calibrateControls'}"><a href="#/calibrate-controls">Calibrate Control</a></li>
+          <li ng-class="{active: activeTab == 'calibrateCamera'}"><a href="#">Calibrate Camera</a></li>
+          <li><a href="#" ng-click="logout()">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </div><!-- /.navbar -->
+</div>

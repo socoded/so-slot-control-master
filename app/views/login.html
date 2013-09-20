@@ -1,0 +1,25 @@
+<div class="alert" ng-show="loginService.isServerNotFound()">
+  <button type="button" class="close" ng-click="loginService.disconnect()">&times;</button>
+  <strong>Login failed!</strong> Check the server URL.
+</div>
+
+<div class="alert" ng-show="loginService.wrongPassword()">
+  <button type="button" class="close" ng-click="loginService.disconnect()">&times;</button>
+  <strong>Login failed!</strong> Wrong password
+</div>
+
+<div class="hero-unit">
+  <form ng-submit="login(serverUrl, password)">
+    <fieldset>
+      <legend>Login</legend>
+      <label>Server URL</label>
+      <input ng-model="serverUrl" type="text">
+
+      <label>Password</label>
+      <input ng-model="password" type="password">
+
+      <button type="submit" class="btn" ng-hide="loginInProgress()">Connect</button>
+      <button type="submit" class="btn" ng-show="loginInProgress()" disabled>Connecting…</button>
+    </fieldset>
+  </form>
+</div>

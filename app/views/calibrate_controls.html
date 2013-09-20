@@ -1,0 +1,44 @@
+<div class="row span9">
+  <h2>Calibrate Controls</h2>
+
+  <div class="row span9">
+    <p>
+      Status:
+      <span ng-show="controllers.ready">Ready</span>
+      <span ng-hide="controllers.ready">Controllers not connected</span>
+
+      <span ng-show="controllers.ready"><button class="btn btn-danger" ng-click="controllers.reconnect()">Reconnect Serial Port</button></span>
+    </p>
+
+    <div ng-hide="controllers.ready">
+      <button class="btn btn-info" ng-click="controllers.getStatus()">Update status</button>
+      <button class="btn btn-danger" ng-click="controllers.listDevices()">Refresh devices</button>
+
+      <form class="form-inline" ng-submit="setupControllers(device)">
+        <fieldset>
+          <select ng-model="device" ng-options="d for d in controllers.devices">
+          </select>
+
+          <button class="btn btn-success">Connect controllers</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+
+  <div class="row span9" ng-show="controllers.ready">
+    <div class="row span9">
+      <button class="btn btn-warning" ng-click="controllers.resetAngleSettings()">Reset angle settings</button>
+    </div>
+
+    <div class="span4">
+      <h3>Control 1</h3>
+
+      <calibration-ui controller="0">
+    </div>
+    <div class="span4">
+      <h3>Control 2</h3>
+
+      <calibration-ui controller="1">
+    </div>
+  </div>
+</div>

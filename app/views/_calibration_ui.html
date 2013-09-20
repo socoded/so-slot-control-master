@@ -1,0 +1,29 @@
+<div ng-init="controllers = $parent.controllers">
+  <button class="btn btn-success" ng-show="controllers.overrides[controller]" ng-click="controllers.release(controller)">Release track control</button>
+  <button class="btn btn-danger" ng-hide="controllers.overrides[controller]" ng-click="controllers.override(controller)">Override track control</button>
+
+  <div ng-show="controllers.overrides[controller]">
+    <pre>
+      {{controllers.angleConfig[controller]}}
+    </pre>
+
+    <p>
+      Live angle:<input type="checkbox" ng-model="liveAngle">
+    </p>
+
+    <p>
+      <input type="number" min="0" max="180" ng-model="angle" ng-change="liveAngle && controllers.setAngle(controller, angle)" />
+      <button class="btn" ng-click="controllers.setAngle(controller, angle)">Set angle</button>
+    </p>
+
+    <p>
+      <button class="btn btn-success" ng-click="controllers.setMin(controller, angle)">Set Min</button>
+      <button class="btn btn-danger" ng-click="controllers.setMax(controller, angle)">Set Max</button>
+    </p>
+
+    <p>
+      <button class="btn btn-info" ng-click="controllers.setAngle(controller, controllers.angleConfig[controller].min)">Check min</button>
+      <button class="btn btn-info" ng-click="controllers.setAngle(controller, controllers.angleConfig[controller].max)">Check max</button>
+    </p>
+  </div>
+</div>
